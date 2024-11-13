@@ -18,7 +18,7 @@ jobs:
           server_address: smtp.gmail.com  
           server_port: 25  
           username: "actionsgithubpractica2@gmail.com"
-          password: "ActionsPractica2"
+          password: "qggt jvsp tqhx wmme"
           subject: "Notificación de Push en la rama ${{ github.ref_name }}"
           body: |
             Se ha realizado un push en la rama **${{ github.ref_name }}**.
