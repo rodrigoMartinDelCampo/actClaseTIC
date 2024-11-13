@@ -1,8 +1,31 @@
-name: Work 1
-on: [push]
+name: Notificación por correo a Gmail
+
+on:
+  push:
+    branches:
+      - main
+      - feature_a
+      - feature_b
+
 jobs:
-  build:
+  send_email:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Haz un print
-        run: echo "Hola hola"
+      - name: Enviar correo a Gmail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com  
+          server_port: 25  
+          username: "actionsgithubpractica2@gmail.com"
+          password: "qggt jvsp tqhx wmme"
+          subject: "Notificación de Push en la rama ${{ github.ref_name }}"
+          body: |
+            Se ha realizado un push en la rama **${{ github.ref_name }}**.
+
+            - **Autor**: ${{ github.actor }}
+            - **Mensaje del commit**: ${{ github.event.head_commit.message }}
+            - **Ver commit**: [Ver commit](${{ github.event.head_commit.url }})
+
+          to: "actionsgithubpractica2@gmail.com"
+          from: "actionsgithubpractica2@gmail.com"
